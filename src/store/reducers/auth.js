@@ -1,29 +1,40 @@
 const initialState = {
-    name: '',
-    email: '',
-    crp: '',
-    cpf: ''
+	token: null,
+	name: '',
+	password: '',
+	email: '',
+	identityNumber: '',
+	identityType: '',
 };
 
-
 export default (state = initialState, action) => {
-    switch (action.type) {
-        case 'setName': 
-            return {...state, name: action.payload.name}
-        
-        case 'setEmail': {
-            return {...state, email: action.payload.email}
-        }
+	switch (action.type) {
+		case 'setToken': {
+			return { ...state, token: action.payload.token };
+		}
 
-        case 'setCRP': {
-            return {...state, crp: action.payload.crp}
-        }
+		case 'setName': {
+			return { ...state, name: action.payload.name };
+		}
 
-        case 'setCPF': {
-            return {...state, cpf: action.payload.cpf}
-        }
+		case 'setEmail': {
+			return { ...state, email: action.payload.email };
+		}
 
-        default:
-            return state;
-    }
-}
+		case 'setPassword': {
+			return { ...state, password: action.payload.password };
+		}
+
+		case 'setIdentityNumber': {
+			return { ...state, identityNumber: action.payload.identityNumber };
+		}
+
+		// CPF or CRP
+		case 'setIdentityType': {
+			return { ...state, identityType: action.payload.identityType };
+		}
+
+		default:
+			return state;
+	}
+};
