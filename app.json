@@ -1,0 +1,12 @@
+{
+  "name": "behavior-app",
+  "displayName": "behavior-app",
+  "expo": {
+    "name": "behavior-app",
+    "slug": "behavior-app",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
