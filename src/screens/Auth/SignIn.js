@@ -3,34 +3,34 @@ import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { LinearGradient } from 'expo-linear-gradient';
-// import { CommonActions } from '@react-navigation/native';
+import { CommonActions } from '@react-navigation/native';
 import { connect } from 'react-redux';
 
 import {
 	setPassword,
-	setIdentityType,
-	setIdentityNumber,
+	setEmail,
+	setName,
+	setToken,
+	setPacienteList,
 } from '../../store/actions/auth/setTexts';
 import {
 	pressedPasswordView,
 	handleSubmitSignIn,
 } from '../../store/actions/auth/functions';
 import Input from '../../components/Input';
-import IdentityInput from '../../components/IdentityInput';
 import PurpleButton from '../../components/PurpleButton';
 import TextButton from '../../components/TextButton';
 import Logo from '../../components/Logo';
-import Cloud from '../../components/Cloud';
 
 const SignIn = ({
-	identityNumber,
-	setIdentityNumber,
-	identityType,
-	setIdentityType,
+	email,
+	setEmail,
 	password,
-	handleSubmitSignIn,
 	setPassword,
-	// navigation: { dispatch },
+	setName,
+	setPacienteList,
+	setToken,
+	navigation: { navigate, dispatch },
 }) => {
 	const [iconEye, setIconEye] = useState('eye-slash');
 	const [eyePassword, setEyePassword] = useState(true);
@@ -46,20 +46,16 @@ const SignIn = ({
 				<Container>
 					<ContainerLogo>
 						<Logo type="text" />
-						<ContainerCloud>
-							<Cloud pos="1" />
-							<Cloud pos="2" />
-							<Cloud pos="3" />
-						</ContainerCloud>
 					</ContainerLogo>
 					<ContainerInputs>
-						<IdentityInput
-							placeholder="Digite seu CPF ou CRP"
-							setState={setIdentityNumber}
-							state={identityNumber}
-							setIdentityType={setIdentityType}
-							identityType={identityType}
+						<Input
+							placeholder="Digite seu e-mail"
+							autoCorrect={false}
+							autoCapitalize="none"
+							keyboardType="email-address"
 							returnKeyType="next"
+							onChangeText={text => setEmail(text)}
+							value={email}
 							onSubmitEditing={() => {
 								passwordRef.current.focus();
 							}}
@@ -83,8 +79,12 @@ const SignIn = ({
 							onSubmitEditing={() =>
 								handleSubmitSignIn(
 									password,
-									identityNumber,
-									identityType
+									email,
+									dispatch,
+									CommonActions,
+									setToken,
+									setName,
+									setPacienteList
 								)
 							}
 						/>
@@ -94,18 +94,19 @@ const SignIn = ({
 							onPress={() =>
 								handleSubmitSignIn(
 									password,
-									identityNumber,
-									identityType
+									email,
+									dispatch,
+									CommonActions,
+									setToken,
+									setName,
+									setPacienteList
 								)
 							}
 						/>
 
 						<TextButton
 							title="Não tem conta? Cadastre-se"
-							onPress={
-								() => console.log('SignUp')
-								// navigate('')
-							}
+							onPress={() => navigate('SignUp')}
 						/>
 					</ContainerInputs>
 				</Container>
@@ -115,33 +116,33 @@ const SignIn = ({
 };
 
 SignIn.propTypes = {
-	identityNumber: PropTypes.string.isRequired,
-	setIdentityNumber: PropTypes.func.isRequired,
+	setName: PropTypes.func.isRequired,
+	setToken: PropTypes.func.isRequired,
 	setPassword: PropTypes.func.isRequired,
-	identityType: PropTypes.string.isRequired,
-	setIdentityType: PropTypes.func.isRequired,
+	email: PropTypes.string.isRequired,
+	setEmail: PropTypes.func.isRequired,
 	password: PropTypes.string.isRequired,
-	handleSubmitSignIn: PropTypes.func.isRequired,
+	setPacienteList: PropTypes.shape([]).isRequired,
 	navigation: PropTypes.shape({
 		dispatch: PropTypes.func.isRequired,
+		navigate: PropTypes.func.isRequired,
 	}).isRequired,
 };
 
-const mapStateToProps = ({
-	auth: { token, identityNumber, identityType, password },
-}) => ({
+const mapStateToProps = ({ auth: { token, email, password } }) => ({
 	token,
-	identityType,
-	identityNumber,
 	password,
+	email,
 });
 
 const mapDispatchToProps = {
+	setName,
+	setToken,
 	setPassword,
-	setIdentityType,
-	setIdentityNumber,
+	setPacienteList,
 	pressedPasswordView,
 	handleSubmitSignIn,
+	setEmail,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
@@ -156,9 +157,4 @@ const ContainerLogo = styled.View`
 
 const ContainerInputs = styled.View`
 	flex: 1;
-`;
-
-const ContainerCloud = styled.View`
-	flex: 1;
-	flex-direction: row;
 `;

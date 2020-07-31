@@ -28,7 +28,8 @@ const Button = styled.TouchableOpacity`
 `;
 
 const TextButton = styled.Text`
-	color: #ffff;
+	color: #acb1b1;
+	font-weight: bold;
 	font-size: 17px;
 	text-decoration: underline;
 `;

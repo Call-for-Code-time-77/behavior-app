@@ -2,15 +2,23 @@ const initialState = {
 	token: null,
 	name: '',
 	password: '',
+	confirmPassword: '',
 	email: '',
+	cpfNumber: '',
+	cprNumber: '',
 	identityNumber: '',
 	identityType: '',
+	pacienteList: [],
 };
 
 export default (state = initialState, action) => {
 	switch (action.type) {
 		case 'setToken': {
 			return { ...state, token: action.payload.token };
+		}
+
+		case 'setPacienteList': {
+			return { ...state, pacienteList: action.payload.pacienteList };
 		}
 
 		case 'setName': {
@@ -25,8 +33,29 @@ export default (state = initialState, action) => {
 			return { ...state, password: action.payload.password };
 		}
 
+		case 'setConfirmPassword': {
+			return {
+				...state,
+				confirmPassword: action.payload.confirmPassword,
+			};
+		}
+
 		case 'setIdentityNumber': {
 			return { ...state, identityNumber: action.payload.identityNumber };
+		}
+
+		case 'setCPFNumber': {
+			return {
+				...state,
+				cpfNumber: action.payload.cpfNumber,
+			};
+		}
+
+		case 'setCPRNumber': {
+			return {
+				...state,
+				cprNumber: action.payload.cprNumber,
+			};
 		}
 
 		// CPF or CRP

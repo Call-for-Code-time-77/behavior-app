@@ -57,7 +57,6 @@ const Container = styled.View`
 const InputContainer = styled.View`
 	flex-direction: row;
 	background-color: #fefafa;
-	border: 3px solid #acb1b1;
 	border-radius: 12px;
 	align-items: center;
 `;

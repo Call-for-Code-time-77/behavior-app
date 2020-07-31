@@ -26,6 +26,34 @@ export const setPassword = password => ({
 	},
 });
 
+export const setConfirmPassword = confirmPassword => ({
+	type: 'setConfirmPassword',
+	payload: {
+		confirmPassword,
+	},
+});
+
+export const setCPFNumber = cpfNumber => ({
+	type: 'setCPFNumber',
+	payload: {
+		cpfNumber,
+	},
+});
+
+export const setCPRNumber = cprNumber => ({
+	type: 'setCPRNumber',
+	payload: {
+		cprNumber,
+	},
+});
+
+export const setPacienteList = pacienteList => ({
+	type: 'setPacienteList',
+	payload: {
+		pacienteList,
+	},
+});
+
 export const setIdentityNumber = identityNumber => ({
 	type: 'setIdentityNumber',
 	payload: {

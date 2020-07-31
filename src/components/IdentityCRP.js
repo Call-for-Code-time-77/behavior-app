@@ -8,8 +8,6 @@ export default ({
 	placeholder,
 	setState,
 	state,
-	identityType,
-	setIdentityType,
 	returnKeyType,
 	onSubmitEditing,
 	inputRef,
@@ -19,21 +17,11 @@ export default ({
 	};
 
 	const configuration = maskedText => {
-		const maskedTextReplaced = maskedText.replace(/[^\d]+/g, '');
-
-		if (maskedTextReplaced.length >= 9) {
-			setIdentityType('cpf');
-		} else {
-			setIdentityType('crp');
-		}
 		setState(dealtString(maskedText));
 	};
 
 	const changeMask = () => {
-		if (identityType === 'cpf') {
-			return '999.999.999-99*';
-		}
-		return '99/99999-9*';
+		return '99/99999-9';
 	};
 
 	return (
@@ -46,7 +34,11 @@ export default ({
 					}}
 					value={state}
 					onChangeText={configuration}
-					style={{ fontSize: 17, color: '#ACB1B1', width: '100%' }}
+					style={{
+						fontSize: 17,
+						color: '#ACB1B1',
+						width: '100%',
+					}}
 					placeholder={placeholder}
 					placeholderTextColor="#ACB1B1"
 					keyboardType="numeric"
@@ -66,7 +58,6 @@ const Container = styled.View`
 
 export const InputContainer = styled.View`
 	flex-direction: row;
-	border: 3px solid #acb1b1;
 	background-color: #fefefe;
 	border-radius: 12px;
 	padding-left: 10px;

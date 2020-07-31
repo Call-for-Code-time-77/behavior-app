@@ -4,28 +4,32 @@ import styled from 'styled-components/native';
 import { CommonActions } from '@react-navigation/native';
 import { connect } from 'react-redux';
 
+const logo = require('../assets/data/PreloadLogo.png');
+
 const Preload = ({ token, navigation: { dispatch } }) => {
 	useEffect(() => {
-		if (token === null) {
-			dispatch(
-				CommonActions.reset({
-					index: 0,
-					routes: [{ name: 'SignIn' }],
-				})
-			);
-		} else {
-			dispatch(
-				CommonActions.reset({
-					index: 0,
-					routes: [{ name: 'SignUp' }],
-				})
-			);
-		}
+		setTimeout(() => {
+			if (!token) {
+				dispatch(
+					CommonActions.reset({
+						index: 0,
+						routes: [{ name: 'On1' }],
+					})
+				);
+			} else {
+				dispatch(
+					CommonActions.reset({
+						index: 0,
+						routes: [{ name: 'PsicoHome' }],
+					})
+				);
+			}
+		}, 5000);
 	}, [dispatch, token]);
 
 	return (
 		<Container>
-			<Text>Behaviour</Text>
+			<Image source={logo} resizeMode="contain" />
 		</Container>
 	);
 };
@@ -41,20 +45,15 @@ Preload.defaultProps = {
 	token: null,
 };
 
-const mapStateToProps = ({ auth: { token } }) => ({
-	token,
-});
-
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Preload);
+export default connect(({ auth: { token } }) => ({ token }), {})(Preload);
 
 const Container = styled.View`
 	flex: 1;
 	justify-content: center;
 	align-items: center;
+	background-color: #f2f2f2;
 `;
 
-const Text = styled.Text`
-	font-size: 20px;
+const Image = styled.Image`
+	width: 80%;
 `;
