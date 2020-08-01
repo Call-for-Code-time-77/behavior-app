@@ -12,7 +12,7 @@ import { Item } from '../../../components/Item';
 
 const topImage = require('../../../assets/images/topImage.png');
 
-const PsicoHome = ({ pacienteList, navigation: { navigate } }) => {
+const Home = ({ pacienteList, navigation: { navigate } }) => {
 	const [selected, setSelected] = React.useState(new Map());
 
 	const onSelect = useCallback(
@@ -79,7 +79,7 @@ const PsicoHome = ({ pacienteList, navigation: { navigate } }) => {
 							size={40}
 						/>
 					</ContaineIcon>
-					<ContaineIcon>
+					<ContaineIcon onPress={() => navigate('Config')}>
 						<Icone name="cog" color="#9E63EE" size={40} />
 					</ContaineIcon>
 				</ListIcons>
@@ -88,7 +88,7 @@ const PsicoHome = ({ pacienteList, navigation: { navigate } }) => {
 	);
 };
 
-PsicoHome.propTypes = {
+Home.propTypes = {
 	pacienteList: PropTypes.shape([]).isRequired,
 	navigation: PropTypes.shape({
 		navigate: PropTypes.func.isRequired,
@@ -99,7 +99,7 @@ PsicoHome.propTypes = {
 export default connect(
 	({ auth: { pacienteList } }) => ({ pacienteList }),
 	{}
-)(PsicoHome);
+)(Home);
 
 const Container = styled.View`
 	flex: 1;
@@ -175,21 +175,19 @@ const IconeNot = styled(Icon3)`
 `;
 
 const ContainerButtonRelates = styled.View`
-	elevation: 5;
+	elevation: 1;
 	width: 70%;
 	height: 70px;
 	align-items: center;
 	justify-content: center;
-	elevation: 7;
 	border-radius: 10px;
 `;
 
-const ContaineIcon = styled.View`
-	elevation: 5;
+const ContaineIcon = styled.TouchableOpacity`
+	elevation: 1;
 	width: 20%;
 	height: 70px;
 	align-items: center;
 	justify-content: center;
-	elevation: 7;
 	border-radius: 10px;
 `;

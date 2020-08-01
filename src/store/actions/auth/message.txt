@@ -1,0 +1,25 @@
+Items needed for submission
+To enter your team’s code, its documentation, and team member information into the 2020 Call for Code competition, one member of your team will require the following information for the submission form.
+
+Submission name –
+Enter the project or team name for your solution in less than five words.
+Short description –
+Describe your team’s solution in about ten words.
+Submission track –
+Choose which track this submission is for. You can submit to both tracks (including apps with a common codebase), but you must create two separate submissions with descriptions that address the specific track challenge.
+University Edition opt-in –
+If you choose to be considered for the University Edition, you confirm that you, and each member of your team meet the eligibility requirements for this award as described in the Participation Agreement and addressed in the University Edition section of the FAQ
+Link to public GitHub repository with working source code –
+Or other publicly accessible location such as GitLab or Box where the judges can download, examine, and evaluate the code behind the solution. You can provide additional description, diagrams, and demos in the repository. You can find a GitHub repository sample here. If you have more than one repository, provide a link to your GitHub organization, for example Sparrow Platform. You must have working code – not just an idea or proposal – to enter the competition. If you do not, please continue to work on your project and submit it later when it’s ready.
+Link to a three-minute demo video –
+Record a demo of your project, upload it to YouTube or Vimeo and share the URL. Three minutes is the maximum length. You can link to longer versions from your source code repository. Keep in mind that non-technical judges may rely on this more than technical documentation.
+Long description –
+Write about 500 words, or around one page of text, that covers the solution in more detail. Please include the real-world problem you identified, describe the technology project you created, and explain why it’s better than any existing solution. You can supply additional documentation in your source code repository link above.
+List of one or more IBM Cloud Services or IBM Systems used in the solution –
+Accept the challenge to get an IBM Cloud account. Your application can use additional data sets, libraries, and externally-hosted services to complement the IBM Cloud services or IBM Systems.
+Solution roadmap –
+Create a document or image that shows how mature your solution is today and how you would like to improve it in the future. This can include information on the business model, funding needs, and a sustainability plan.
+Your email address and the email addresses of up to four additional team members –
+Each team member needs to accept the Participation Agreement. You can only be part of one team of up to 5 members, and your team can only submit one application to each track.
+Additional details –
+The team leader who submitted the solution will receive an email confirming the submission details. If you need to update or replace your submission, please create a new submission. The latest submission from the submitter email address before the July 31, 2020 11:59pm US Pacific Time deadline will be considered the final entry.

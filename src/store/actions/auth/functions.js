@@ -1,4 +1,4 @@
-import { doSignIn, getPacienteList } from '../../../API/accessApi';
+import { doSignIn, doSignUp, getPacienteList } from '../../../API/accessApi';
 
 export const pressedPasswordView = (iconEye, setIconEye, setEyePassword) => {
 	return () => {
@@ -48,6 +48,35 @@ export const handleSubmitSignIn = (
 		});
 };
 
-export const handleSubmitSignUp = () => {
-	console.log('Hello');
+export const handleSubmitSignUp = (
+	name,
+	email,
+	password,
+	confirmPassword,
+	cpfNumber,
+	cprNumber,
+	dispatch,
+	CommonActions
+) => {
+	doSignUp(name, email, password, confirmPassword, cpfNumber, cprNumber)
+		.then(() => {
+			if (cprNumber != null) {
+				dispatch(
+					CommonActions.reset({
+						index: 0,
+						routes: [{ name: 'UserHome' }],
+					})
+				);
+			} else {
+				dispatch(
+					CommonActions.reset({
+						index: 0,
+						routes: [{ name: 'PsicoHome' }],
+					})
+				);
+			}
+		})
+		.catch(reject => {
+			console.log(reject);
+		});
 };

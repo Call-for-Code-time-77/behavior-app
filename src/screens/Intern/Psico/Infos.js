@@ -14,7 +14,6 @@ const Infos = ({ navigation: { goBack }, route }) => {
 	const { data } = route.params;
 	const { name, cpf } = data.patient;
 
-	console.log(data);
 	return (
 		<Container>
 			<BackButton onPress={() => goBack()}>
@@ -81,7 +80,6 @@ const TextName = styled.Text`
 `;
 
 const ContainerDetails = styled.View`
-	elevation: 7;
 	border-radius: 10px;
 	width: 60%;
 	padding: 20px;

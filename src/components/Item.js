@@ -25,7 +25,7 @@ export const Item = ({ data, selected, onSelect, navigate }) => {
 };
 
 const Container = styled.View`
-	elevation: 7;
+	elevation: 1;
 	border-radius: 10px;
 	padding: 20px;
 	margin-bottom: 10px;
